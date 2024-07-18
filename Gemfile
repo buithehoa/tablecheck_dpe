@@ -37,7 +37,7 @@ gem "bootsnap", require: false
 
 gem "sidekiq", ">= 7.3.0"
 
-gem "mongodb", ">= 2.1.0"
+gem "mongoid"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
