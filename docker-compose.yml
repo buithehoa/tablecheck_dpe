@@ -5,8 +5,6 @@ services:
     build: .
     ports:
       - "3000:3000"
-    volumes:
-      - ./:/app
     depends_on:
       - mongo
       - redis
@@ -27,7 +25,7 @@ services:
 
   sidekiq:
     build: .
-    command: sidekiq
+    command: ["bundle", "exec", "sidekiq"]
     depends_on:
       - redis
     environment:
