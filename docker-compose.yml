@@ -9,12 +9,14 @@ services:
       - mongo
       - redis
     environment:
-      - DATABASE_URL=mongodb://mongo:27017/my_app
+      # - DATABASE_URL=mongodb://mongo:27017/tablecheck_development
       - REDIS_URL=redis://redis:6379
       - SIDEKIQ_URL=redis://redis:6379
 
   mongo:
     image: mongo:latest
+    ports:
+      - "27017:27017"
     volumes:
       - mongo-data:/data/db
 
