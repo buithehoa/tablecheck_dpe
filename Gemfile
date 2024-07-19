@@ -37,7 +37,7 @@ gem "bootsnap", require: false
 
 gem "sidekiq", ">= 7.3.0"
 
-gem "mongoid"
+gem "mongoid", ">= 9.0.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -49,4 +49,8 @@ group :development do
   # gem "spring"
 
   # gem "error_highlight", ">= 0.6.0", platforms: [:ruby]
+end
+
+group :development, :test do
+  gem "rspec-rails"
 end
