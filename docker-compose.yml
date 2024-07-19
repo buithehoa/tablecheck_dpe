@@ -12,6 +12,8 @@ services:
       # - DATABASE_URL=mongodb://mongo:27017/tablecheck_development
       - REDIS_URL=redis://redis:6379
       - SIDEKIQ_URL=redis://redis:6379
+    volumes:
+      - .:/rails
 
   mongo:
     image: mongo:latest
