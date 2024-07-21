@@ -29,7 +29,7 @@ Neon Legwarmers,Footwear,876,198
 
 **Content**:
 ```json
-{ message: "Inventory imported successfully."}
+{ "message": "Inventory imported successfully."}
 ```
 
 ## Error Responses
@@ -40,5 +40,5 @@ Neon Legwarmers,Footwear,876,198
 
 **Content**:
 ```json
-{ message: "Please select a CSV file to import."}
+{ "message": "Please select a CSV file to import."}
 ```
