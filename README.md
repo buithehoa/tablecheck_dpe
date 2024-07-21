@@ -62,11 +62,10 @@ To get a local copy up and running, follow these steps.
 4. Verify if the Rails app is running by visiting http://localhost:3000 in your web browser.
 
 ## Testing
-Run all specs with `bundle exec rspec`
+Run all specs with
 ```sh
-$ bundle exec rspec
-Finished in 1.13 seconds (files took 0.14603 seconds to load)
-24 examples, 0 failures
+docker exec -it tablecheck_dpe-app-1 bash
+bundle exec rspec
 ```
 
 ## Code Navigation

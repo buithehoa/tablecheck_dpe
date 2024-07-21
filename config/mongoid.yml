@@ -283,7 +283,7 @@ test:
     default:
       database: tablecheck_dpe_test
       hosts:
-        - localhost:27017
+        - mongo
       options:
         read:
           mode: :primary

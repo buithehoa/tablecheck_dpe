@@ -1,5 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'database_cleaner/mongoid'
+require 'mongoid-rspec'
+require_relative 'support/factory_bot'
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -52,4 +56,17 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.include Mongoid::Matchers, type: :model
+
+  config.before(:suite) do
+    DatabaseCleaner[:mongoid].strategy = [:deletion]
+    DatabaseCleaner[:mongoid].clean_with(:deletion)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner[:mongoid].cleaning do
+      example.run
+    end
+  end
 end
