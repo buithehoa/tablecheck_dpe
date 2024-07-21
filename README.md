@@ -14,9 +14,6 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -34,5 +31,32 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<a href="https://github.com/TableCheck-Labs/tablecheck-ruby-take-home/blob/main/README.md" target="_blank">TableCheck Dynamic Pricing Engine Specification</a>
+[TableCheck Dynamic Pricing Engine Specification](https://github.com/TableCheck-Labs/tablecheck-ruby-take-home/blob/main/README.md)
 
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+[Docker 24](https://docs.docker.com/get-docker/)
+<br/>
+[Docker Compose 1.29](https://docs.docker.com/compose/install/)
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone git@github.com:buithehoa/tablecheck_dpe.git
+   ```
+2. Build and start Docker containers
+   ```sh
+   docker compose up --build
+   ```
+3. Create user seed data
+   ```sh
+   docker exec -it tablecheck_dpe-app-1 bash
+   bundle exec rake db:seed
+   ```
+4. Verify if the Rails app is running by visiting http://localhost:3000 in your web browser.
