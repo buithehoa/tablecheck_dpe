@@ -4,6 +4,14 @@ module V1
 
     include InventoryImportable
 
+    def index
+      products = Product.all
+      render json: products, each_serializer: ProductSerializer
+    end
+
+    def show
+    end
+
     def import
       if valid_csv?(params[:inventory])
         import_inventory(params[:inventory].tempfile)
