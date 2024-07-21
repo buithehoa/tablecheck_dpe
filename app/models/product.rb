@@ -12,4 +12,16 @@ class Product
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
+  def recent_purchased_quantity
+    OrderItem.where.in(
+      order_id: Order.placed_recently.pluck(:_id),
+      product_id: BSON::ObjectId(self._id)).sum(:quantity)
+  end
+
+  def recent_added_quantity
+    OrderItem.where.in(
+      order_id: Order.updated_recently.pluck(:_id),
+      product_id: BSON::ObjectId(self._id)).sum(:quantity)
+  end
 end

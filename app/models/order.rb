@@ -12,6 +12,9 @@ class Order
     PLACED = 'placed'
   end
 
+  scope :placed_recently, -> { where(status: 'placed', updated_at: 1.week.ago..Time.now) }
+  scope :updated_recently, -> { where(status: 'current', updated_at: 1.week.ago..Time.now) }
+
   def place!
     raise Errors:OrderAlreadyPlacedError if self.status == Status::PLACED
 
