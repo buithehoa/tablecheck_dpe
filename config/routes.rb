@@ -20,5 +20,7 @@ Rails.application.routes.draw do
     resources :products do
       post 'import', on: :collection
     end
+
+    resources :users, only: [:index]
   end
 end
