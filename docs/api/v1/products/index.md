@@ -7,7 +7,8 @@ Retrieve a list of all available products in the system.
 **Method**: `GET`
 
 **Parameters**:
-* None required
+
+None required
 
 ## Success Response
 
@@ -39,7 +40,5 @@ The response will be a JSON array containing product objects. Each object will h
 ## Error Responses
 
 **Code**: `500 Internal Server Error`
-
-**Content**:
 
 An unexpected error occurred on the server while processing the request.
