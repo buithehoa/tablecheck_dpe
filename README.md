@@ -24,6 +24,7 @@
     </li>
     <li><a href="#testing">Testing</a></li>
     <li><a href="#code-navigation">Code Nagivation</a></li>
+    <li><a href="#platform-api-overview">Platform API Overview</a></li>
     <li><a href="#dynamic-product-pricing-logic">Dynamic Product Pricing Logic</a></li>
   </ol>
 </details>
@@ -97,7 +98,7 @@ Here's a breakdown of the key features:
 * Versioning:
   * The API is versioned to facilitate updates and ensure compatibility with existing integrations.
 
-Refer to the comprehensive [Platform API Documentation](http://go.to) to learn more about all functionalities.
+Refer to the comprehensive [Platform API Documentation](https://github.com/buithehoa/tablecheck_dpe/blob/main/DPE_API_V1.md) to learn more about all functionalities.
 
 # Dynamic Product Pricing Logic
 This outlines the logic used to dynamically adjust product prices based on several criteria:
