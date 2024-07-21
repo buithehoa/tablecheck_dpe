@@ -12,6 +12,6 @@ require "securerandom"
 
 ["larue", "thorne"].each do |username|
   user = User.find_or_initialize_by(username: username)
-  user.api_token = SecureRandom.base64(24)
+  user.api_token = SecureRandom.urlsafe_base64(24)
   user.save!
 end
