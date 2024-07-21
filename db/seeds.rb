@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require "securerandom"
+
+["larue", "thorne"].each do |username|
+  user = User.find_or_initialize_by(username: username)
+  user.api_token = SecureRandom.base64(24)
+  user.save!
+end

@@ -1,8 +1,8 @@
 module V1
   class ProductsController < ApplicationController
-    rescue_from ::InventoryImportError, with: :handle_inventory_import_error
-
     include InventoryImportable
+
+    rescue_from Errors::InventoryImportError, with: :handle_inventory_import_error
 
     def index
       products = Product.all
@@ -21,12 +21,6 @@ module V1
       else
         render json: { message: "Please select a CSV file to import." }, status: :unprocessable_entity
       end
-    end
-
-    private
-
-    def handle_inventory_import_error(exception)
-      render json: { message: exception.message }, status: :unprocessable_entity
     end
   end
 end

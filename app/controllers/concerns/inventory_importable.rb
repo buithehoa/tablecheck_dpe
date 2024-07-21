@@ -20,6 +20,10 @@ module InventoryImportable
       product.save!
     end
   rescue CSV::MalformedCSVError, Mongoid::Errors::MongoidError => e
-    raise InventoryImportError, "Error importing inventory: #{e.message}"
+    raise Errors::InventoryImportError, "Error importing inventory: #{e.message}"
+  end
+
+  def handle_inventory_import_error(exception)
+    render json: { message: exception.message }, status: :unprocessable_entity
   end
 end

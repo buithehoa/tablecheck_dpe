@@ -9,6 +9,14 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   namespace :v1 do
+    resources :orders, only: [] do
+      collection do
+        get 'current'
+        put 'add'
+        put 'place'
+      end
+    end
+
     resources :products do
       post 'import', on: :collection
     end
