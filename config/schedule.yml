@@ -1,0 +1,3 @@
+competitor_price_poll_job:
+  class: "CompetitorPricePollJob"
+  cron: "* * * * *"
