@@ -1,8 +1,8 @@
-# Add Product to Order
+# Place Order
 
-Add a product to the current order of the current authenticated user.
+Finalize and submit the current order associated with the authenticated user. This action updates product inventory and marks the order as `placed`.
 
-**URL**: `/api/v1/orders/add`
+**URL**: `/api/v1/orders/place`
 
 **Method**: `PUT`
 
@@ -14,38 +14,23 @@ This endpoint requires a valid API token for authorization. You can obtain your 
 
 `api_token`: (Required) Valid API token for the authenticated user.
 
-`product_id`: (Required) Product ID
-
 ## Success Response
 
 **Code** : `200 OK`
 
 **Content**:
 
-The response object will contain details about the updated current order, including the newly added product.
+The response object indicates successful order placement.
 ```json
-{
-  "id": "669d67848c98ade01b2d8518",
-  "status": "current",
-  "order_items": [
-    {
-      "product": "Neon Legwarmers",
-      "quantity": 2
-    },
-    {
-      "product": "Rambo Bandana",
-      "quantity": 5
-    }
-  ]
-}
+{ "message": "Order placed successfully." }
 ```
 
 ## Error Responses
 
 **Code**: `422 Unprocessable Content`
-
-Inventory shortage: The quantity of the selected product exceeds the available inventory.
-
+* Inventory shortage: The quantity of a product in your order exceeds the available inventory.
+* No current order: The current user has no active order.
+* Order already placed: You cannot place an order that has already been submitted.
 
 **Code**: `401 Unauthorized`
 
