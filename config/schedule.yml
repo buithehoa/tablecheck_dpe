@@ -1,3 +1,9 @@
-competitor_price_poll_job:
-  class: "CompetitorPricePollJob"
+dynamic_pricing_job:
+  class: "DynamicPricingJob"
   cron: "* * * * *"
+  queue: "default"
+
+competitor_price_sync_job:
+  class: "CompetitorPriceSyncJob"
+  cron: "*/2 * * * *"
+  queue: "default"

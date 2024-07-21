@@ -24,14 +24,16 @@ class Order
     self.update!(status: Status::PLACED)
   end
 
-  def self.current_order(user, auto_create: true)
-    order = user.orders.where(status: Status::CURRENT).first
+  class << self
+    def current_order(user, auto_create: true)
+      order = user.orders.where(status: Status::CURRENT).first
 
-    Rails.logger.info "auto_create: #{auto_create}"
-    if auto_create
-      order ||= create!(user: user, status: Status::CURRENT)
+      Rails.logger.info "auto_create: #{auto_create}"
+      if auto_create
+        order ||= create!(user: user, status: Status::CURRENT)
+      end
+
+      order
     end
-
-    order
   end
 end

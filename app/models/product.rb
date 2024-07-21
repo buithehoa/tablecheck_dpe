@@ -4,6 +4,8 @@ class Product
 
   field :name, type: String
   field :price, type: Integer, default: 0
+  field :competitor_price, type: Integer, default: nil
+  field :adjusted_price, type: Integer, default: nil
   field :quantity, type: Integer, default: 0
 
   belongs_to :category
