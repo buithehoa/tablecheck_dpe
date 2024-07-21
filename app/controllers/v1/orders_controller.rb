@@ -2,26 +2,32 @@ module V1
   class OrdersController < ApplicationController
     include InventoryCheckable
 
-    rescue_from Errors::InventoryShortageError, with: :handle_inventory_shortage_error
+    rescue_from Errors::InventoryShortageError,
+                Errors::NoCurrentOrderError,
+                Errors::OrderAlreadyPlacedError,
+                with: :handle_error
 
     before_action :require_user
-    before_action :current_order
+    before_action :current_order, only: [:add, :current]
 
     def current
       render json: current_order, serializer: OrderSerializer, status: :ok
     end
 
     def add
-      check_inventory!
+      check_item_inventory!
 
       @order_item.quantity += params[:quantity].to_i
       @order_item.save!
+
       render json: current_order, serializer: OrderSerializer, status: :ok
     end
 
     def place
-      @order = current_user.order.where(status: 'current').first
-      @order.update!(status: 'placed')
+      check_order_inventory!
+
+      @order.place!
+
       render json: { message: "Order placed successfully." }, status: :ok
     end
 
@@ -31,8 +37,8 @@ module V1
       @current_order ||= Order.current_order(current_user)
     end
 
-    def handle_inventory_shortage_error
-      render json: { message: "Inventory shortage: Cannot add item to order." }, status: :unprocessable_entity
+    def handle_error(exception)
+      render json: { message: exception.message }, status: :unprocessable_entity
     end
   end
 end

@@ -12,9 +12,25 @@ class Order
     PLACED = 'placed'
   end
 
-  def self.current_order(user)
+  def place!
+    raise Errors:OrderAlreadyPlacedError if self.status == Status::PLACED
+
+    self.order_items.each do |item|
+      product = item.product
+      product.quantity -= item.quantity
+      product.save!
+    end
+
+    self.update!(status: Status::PLACED)
+  end
+
+  def self.current_order(user, auto_create: true)
     order = user.orders.where(status: Status::CURRENT).first
-    order ||= create!(user: user, status: Status::CURRENT)
+
+    Rails.logger.info "auto_create: #{auto_create}"
+    if auto_create
+      order ||= create!(user: user, status: Status::CURRENT)
+    end
 
     order
   end
