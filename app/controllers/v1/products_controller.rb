@@ -10,6 +10,8 @@ module V1
     end
 
     def show
+      @product = Product.find(BSON::ObjectId(params[:id]))
+      render json: @product, serializer: ProductSerializer
     end
 
     def import
