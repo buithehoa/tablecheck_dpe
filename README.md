@@ -98,7 +98,7 @@ Here's a breakdown of the key features:
 * Versioning:
   * The API is versioned to facilitate updates and ensure compatibility with existing integrations.
 
-Refer to the comprehensive [Platform API Documentation](https://github.com/buithehoa/tablecheck_dpe/blob/main/DPE_API_V1.md) to learn more about all functionalities.
+Refer to the comprehensive [Platform API Documentation](https://github.com/buithehoa/tablecheck_dpe/blob/main/docs/api/v1/README.md) to learn more about all functionalities.
 
 # Dynamic Product Pricing Logic
 This outlines the logic used to dynamically adjust product prices based on several criteria:
