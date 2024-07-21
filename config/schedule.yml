@@ -1,9 +1,9 @@
 dynamic_pricing_job:
   class: "DynamicPricingJob"
-  cron: "* * * * *"
+  cron: "*/30 * * * *"
   queue: "default"
 
 competitor_price_sync_job:
   class: "CompetitorPriceSyncJob"
-  cron: "*/2 * * * *"
+  cron: "* 0 * * *"
   queue: "default"

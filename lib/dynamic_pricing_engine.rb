@@ -13,11 +13,6 @@ class DynamicPricingEngine
       # https://stackoverflow.com/a/8611674/87972
       Product.all.each do |product|
         product.update!(adjusted_price: calculate_price(product))
-
-        if product.price != product.adjusted_price
-          Rails.logger.info "[INFO] product = #{product.name}"
-          Rails.logger.info "[INFO] price = #{product.price}, adjusted_price = #{product.adjusted_price}\n"
-        end
       end
     end
 
@@ -60,6 +55,8 @@ class DynamicPricingEngine
     end
 
     def competitor_adjustment(adjusted_price, competitor_price)
+      return adjusted_price if competitor_price.nil?
+
       # Strategy: Match lowest competitor price
       return competitor_price if adjusted_price > competitor_price
       return adjusted_price
