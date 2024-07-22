@@ -1,6 +1,6 @@
 # API V1 Documentation
 
-Import this [Postman collection](https://github.com/buithehoa/tablecheck_dpe/blob/main/postman_collection.json) to get pre-configured requests for all API endpoints, allowing you to quickly send test requests and examine responses.
+Import this [Postman collection](https://github.com/buithehoa/tablecheck_dpe/blob/main/docs/postman_collection.json) to get pre-configured requests for all API endpoints, allowing you to quickly send test requests and examine responses.
 
 ## Products
 * [Import Products](products/import.md) `POST /api/v1/products/import`
