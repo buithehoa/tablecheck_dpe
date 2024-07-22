@@ -1,4 +1,8 @@
 require 'rails_helper'
+
 RSpec.describe CompetitorPriceSyncJob, type: :job do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'calls DynamicPricingEngine.sync_competitor_prices' do
+    expect(DynamicPricingEngine).to receive(:sync_competitor_prices)
+    subject.perform
+  end
 end
