@@ -65,4 +65,6 @@ group :test do
   gem "database_cleaner-mongoid", "~> 2.0.1"
 
   gem "mongoid-rspec", "~> 4.2.0"
+
+  gem "webmock", "~> 3.23.1"
 end

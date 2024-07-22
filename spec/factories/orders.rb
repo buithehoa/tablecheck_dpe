@@ -3,5 +3,9 @@ FactoryBot.define do
     status { 'current' }
 
     user { create(:user) }
+
+    trait :placed do
+      status { 'placed' }
+    end
   end
 end
